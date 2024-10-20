@@ -1,9 +1,10 @@
-/Simple-Blog/bin
-/Simple-Blog/logs
-/Simple-Blog/Migrations
-/Simple-Blog/obj
+/Simple-BlogApi/bin
+/Simple-BlogApi/logs
+/Simple-BlogApi/Migrations
+/Simple-BlogApi/obj
 
 /Simple-BlogUI/bin
 /Simple-BlogUI/logs
 /Simple-BlogUI/Migrations
 /Simple-BlogUI/obj
+.vs
