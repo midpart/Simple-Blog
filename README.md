@@ -31,14 +31,19 @@ You will develop a simple blogging platform where users can create, read, update
     o Provide brief and clear instructions on how to set up and run the application locally.
 
 
+# About this git
+It has two projects
+1. Simple-BlogApi: It is a Web API with .NET 8.0. It uses MSSQL database for storing data.
+2. Simple-BlogUI: It is a Blazor Server App with .NET 6.0
+
 # How to use this git
 
 1. Pull this git to your local derive.
-2. Create a Database "SimpleBlog" or anyone as you feel comfortable and change the connection from "appsettings.json" of API project named <b>"Simple-Blog"</b>
-3. Now need to migrate DB, for this run these two command in <b>"Simple-Blog's"</b> Package Manager Console <br/>
+2. Create a Database "SimpleBlog" or anyone as you feel comfortable and change the connection from "appsettings.json" of API project named <b>"Simple-BlogApi"</b>
+3. Now need to migrate DB, for this run these two command in <b>"Simple-BlogApi's"</b> Package Manager Console <br/>
      i. Add-Migration migrationName<br/>
      ii. Update-Database<br/>
-4. Now the <b>"Simple-Blog's"</b> is ready to use.
+4. Now the <b>"Simple-BlogApi's"</b> is ready to use.
 5. Then you need to change the API connection from <b>Simple-BlogUI</b> appsettings.json "ApiConnections"
    
 
