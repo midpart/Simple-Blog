@@ -1,0 +1,23 @@
+﻿
+<EditForm Model="blogCreateUpdateViewModel" OnValidSubmit="SaveBlog">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <InputText class="form-control" placeholder="Blog title" @bind-Value="blogCreateUpdateViewModel.Title"></InputText>
+    <ValidationMessage For="(()=>blogCreateUpdateViewModel.Title)"></ValidationMessage>
+    <br />
+    <InputTextArea class="form-control" style="height: 30vh;" placeholder="Blog Description" @bind-Value="blogCreateUpdateViewModel.Description"></InputTextArea>
+    <ValidationMessage For="(()=>blogCreateUpdateViewModel.Description)"></ValidationMessage><br />
+    <button class="btn btn-success">Save Blog</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public BlogCreateUpdateViewModel blogCreateUpdateViewModel { get; set; }
+
+    [Parameter]
+    public EventCallback<BlogCreateUpdateViewModel> OnSaveBlogEvent { get; set; }
+
+    private void SaveBlog()
+    {
+        OnSaveBlogEvent.InvokeAsync(blogCreateUpdateViewModel);
+    }
+}

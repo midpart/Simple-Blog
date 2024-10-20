@@ -1,0 +1,44 @@
+﻿@page "/edit-blog/{id:long}"
+@inject IBlogService _blogService
+@inject NavigationManager navManager
+
+<h3>Edit Blog</h3>
+@if (blogCreateUpdateViewModel is null)
+{
+    <p class="text-danger">Invalid blog</p>
+}
+else
+{
+    <AddEditBlogForm blogCreateUpdateViewModel="blogCreateUpdateViewModel" OnSaveBlogEvent="UpdateBlog"></AddEditBlogForm>
+}
+
+@code {
+    [Parameter]
+    public long id { get; set; }
+
+    private BlogCreateUpdateViewModel blogCreateUpdateViewModel { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var blogVM = await _blogService.GetBlog(id);
+        if (blogVM != null)
+        {
+            blogCreateUpdateViewModel = new BlogCreateUpdateViewModel()
+                {
+                    BlogId = blogVM.BlogId,
+                    Title = blogVM.Title,
+                    Description = blogVM.Description,
+                    Status = blogVM.Status,
+                };
+        }
+        await base.OnInitializedAsync();
+    }
+
+    private async Task UpdateBlog(BlogCreateUpdateViewModel saveBlogVm)
+    {
+        var isSuccess = await _blogService.UpdateBlog(saveBlogVm);
+
+        if (isSuccess)
+            navManager.NavigateTo($"./{BlogConstant.ViewBlog}/{id}");
+    }
+}

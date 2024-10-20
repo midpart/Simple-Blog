@@ -1,0 +1,38 @@
+﻿@page "/view-blog/{id:long}"
+@inject NavigationManager navManager
+@inject IBlogService _blogService
+
+@if (blogViewModel is not null)
+{
+    <div class="card">
+        <h5 class="card-header">@((MarkupString)blogViewModel.Title)</h5>
+        <div class="card-body">
+            <h5 class="card-title">@blogViewModel.CreationDate.ToString("HH:mm tt dd MMM, yyyy")</h5>
+            <p class="card-text"> @((MarkupString)blogViewModel.Description)</p>
+        </div>
+    </div>
+    <br/>
+}
+else
+{
+    <p class="text-danger">Invalid Blog</p>
+}
+<p><button class="btn btn-primary" @onclick="GoToIndex">Got to Index</button></p>
+
+@code {
+    [Parameter]
+    public long id { get; set; }
+    [Parameter]
+    public BlogViewModel blogViewModel { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        blogViewModel = await _blogService.GetBlog(id);
+        await base.OnInitializedAsync();
+    }
+
+    private void GoToIndex()
+    {
+        navManager.NavigateTo($"./{BlogConstant.Index}");
+    }
+}

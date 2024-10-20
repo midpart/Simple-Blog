@@ -1,0 +1,17 @@
+﻿@page "/"
+@using Simple_BlogUI.Pages.BlogComponents;
+
+<PageTitle>Blog List</PageTitle>
+
+<h1>Blog List</h1>
+<p><button class="btn btn-primary" @onclick="GoToNewBlog">New Blog</button></p>
+
+<BlogList BlogVmList="Blogs" DeleteBlogEvent="DeleteBlog" HasViewMoreButton="HasMoreButton" ViewMoreBlogEvent="ViewMoreBlogEvent">
+    <NullContent>
+        <p class="text-center text-danger">Blogs are loading.....</p>
+    </NullContent>
+    <EmptyContent>
+        <p class="text-center text-warning">There is no blogs to display.</p>
+    </EmptyContent>
+</BlogList>
+

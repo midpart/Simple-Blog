@@ -1,0 +1,76 @@
+﻿@inject NavigationManager navManager
+@using System.Timers
+@implements IDisposable
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text"> <a @onclick="GotoView">@blogViewModel.Title</a></p>
+                <p class="card-text"> @blogViewModel.CreationDate.ToString("dd MMM, yyyy HH:mm tt") [@dateTimeValue.TrimEnd()]</p>
+                <button class="btn btn-primary" @onclick="GotoView">View More</button>
+                <button class="btn btn-secondary" @onclick="GotoEdit">Edit</button>
+                <button class="btn btn-danger" @onclick="@(()=> DeleteBlogEvent.InvokeAsync(blogViewModel))">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+
+@code {
+    private Timer timer;
+    private string dateTimeValue;
+
+    [Parameter]
+    public BlogViewModel blogViewModel { get; set; }
+    [Parameter]
+    public EventCallback<BlogViewModel> DeleteBlogEvent { get; set; }
+
+    public void Dispose()
+    {
+        timer.Dispose();
+    }
+
+    protected override void OnInitialized()
+    {
+        GetDateTimeValue();
+        base.OnInitialized();
+        timer = new Timer();
+        timer.Interval = 1000;
+        timer.Elapsed += (sender, e) =>
+        {
+            GetDateTimeValue();
+            InvokeAsync(() =>
+            {
+                StateHasChanged();
+            });
+        };
+        timer.Enabled = true;
+    }
+
+    private void GetDateTimeValue()
+    {
+        var timeSpan = DateTime.Now - blogViewModel.CreationDate;
+
+        var sec = timeSpan.Seconds;
+        var min = timeSpan.Minutes;
+        var hours = timeSpan.Hours;
+        var days = timeSpan.Days;
+        dateTimeValue = $"{(days > 0 ? $"{days} day{(days > 1 ? "s" : "")} " : "")}";
+        dateTimeValue += $"{(hours > 0 ? $"{hours} hour{(hours > 1 ? "s" : "")} " : "")}";
+        dateTimeValue += $"{(min > 0 ? $"{min} minute{(min > 1 ? "s" : "")} " : "")}";
+        if (min <= 0 && hours <= 0 && days <= 0)
+            dateTimeValue += $"{(sec > 0 ? $"{sec} seconds{(sec > 1 ? "s" : "")} " : "")}";
+        dateTimeValue += "ago";
+    }
+
+
+    private void GotoView()
+    {
+        navManager.NavigateTo($"./{BlogConstant.ViewBlog}/{blogViewModel.BlogId}");
+    }
+    private void GotoEdit()
+    {
+        navManager.NavigateTo($"./{BlogConstant.EditBlog}/{blogViewModel.BlogId}");
+    }
+}

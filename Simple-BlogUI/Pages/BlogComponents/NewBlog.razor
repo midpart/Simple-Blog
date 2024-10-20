@@ -1,0 +1,22 @@
+﻿@page "/new-blog"
+@inject IBlogService _blogService
+@inject NavigationManager navManager
+<h3>New Blog</h3>
+<AddEditBlogForm blogCreateUpdateViewModel="blogCreateUpdateViewModel" OnSaveBlogEvent="SaveBlog"></AddEditBlogForm>
+@code {
+    private BlogCreateUpdateViewModel blogCreateUpdateViewModel { get; set; }
+
+    protected override void OnInitialized()
+    {
+        blogCreateUpdateViewModel = new BlogCreateUpdateViewModel();
+        base.OnInitialized();
+    }
+
+    private async Task SaveBlog(BlogCreateUpdateViewModel saveBlogVm)
+    {
+        var isSuccess = await _blogService.SaveBlog(saveBlogVm);
+
+        if (isSuccess)
+            navManager.NavigateTo("./");
+    }
+}

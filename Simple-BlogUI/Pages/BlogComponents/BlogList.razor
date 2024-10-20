@@ -1,0 +1,53 @@
+﻿@if (BlogVmList is null)
+{
+    @NullContent
+}
+else if (BlogVmList.Any() == false)
+{
+    @EmptyContent
+}
+else
+{
+    foreach (var item in BlogVmList)
+    {
+        <IndividualBlog blogViewModel="item" DeleteBlogEvent="DeletePermission"></IndividualBlog>
+    }
+
+    if (HasViewMoreButton)
+    {
+        <button class="btn btn-primary" @onclick="()=> ViewMoreBlogEvent.InvokeAsync()">View More..</button>
+    }
+}
+
+<DeleteConfimation @ref="deleteConfimationReference" OnConfirmEvent="OnConfirmEvent">
+</DeleteConfimation>
+
+@code {
+    private DeleteConfimation deleteConfimationReference;
+    [Parameter]
+    public List<BlogViewModel> BlogVmList { get; set; }
+    [Parameter]
+    public RenderFragment NullContent { get; set; }
+    [Parameter]
+    public RenderFragment EmptyContent { get; set; }
+    [Parameter]
+    public EventCallback<long> DeleteBlogEvent { get; set; }
+    [Parameter]
+    public EventCallback ViewMoreBlogEvent { get; set; }
+    [Parameter]
+    public bool HasViewMoreButton { get; set; }
+
+    private void DeletePermission(BlogViewModel blogVM)
+    {
+        deleteConfimationReference.modalTitle = "Delete Blog";
+        deleteConfimationReference.modalContent = "Do you want to delete this blog?";
+        deleteConfimationReference.deleteId = blogVM.BlogId;
+        deleteConfimationReference.Show();
+    }
+
+    private void OnConfirmEvent(long blogId)
+    {
+        DeleteBlogEvent.InvokeAsync(blogId);
+        deleteConfimationReference.Hide();
+    }
+}

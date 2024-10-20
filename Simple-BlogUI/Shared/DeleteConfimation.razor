@@ -1,0 +1,43 @@
+﻿@if (showPopUp)
+{
+    <div class="model-backdrop show"></div>
+    <div class="modal fade-slow" style="display:block" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@modalTitle</h5>
+                    <button @onclick="Hide" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        @* <span aria-hidden="true">&times;</span> *@
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>@modalContent</p>
+                </div>
+                <div class="modal-footer">
+                    <button @onclick="Hide" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button @onclick="ConfirmDelete" type="button" class="btn btn-danger">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@code{
+    private bool showPopUp = false;
+
+    public string modalTitle { get; set; }
+    public string modalContent { get; set; }
+    public long deleteId { get; set; }
+
+    [Parameter]
+    public EventCallback<long> OnConfirmEvent { get; set; }
+
+    public void Show() => showPopUp = true;
+    public void Hide() => showPopUp = false;
+
+    public async Task ConfirmDelete()
+    {
+        await OnConfirmEvent.InvokeAsync(deleteId);
+        Hide();
+    }
+
+}
