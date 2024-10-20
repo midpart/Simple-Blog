@@ -35,9 +35,9 @@ You will develop a simple blogging platform where users can create, read, update
 
 1. Pull this git to your local derive.
 2. Create a Database "SimpleBlog" or anyone as you feel comfortable and change the connection from "appsettings.json" of API project named <b>"Simple-Blog"</b>
-3. Now need to migrate DB, for this run these two command in <b>"Simple-Blog's"</b> Package Manager Console
-     i. Add-Migration migrationName
-     ii. Update-Database
+3. Now need to migrate DB, for this run these two command in <b>"Simple-Blog's"</b> Package Manager Console <br/>
+     i. Add-Migration migrationName<br/>
+     ii. Update-Database<br/>
 4. Now the <b>"Simple-Blog's"</b> is ready to use.
 5. Then you need to change the API connection from <b>Simple-BlogUI</b> appsettings.json "ApiConnections"
    
