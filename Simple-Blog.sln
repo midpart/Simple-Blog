@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple-BlogApi", "Simple-Blog\Simple-BlogApi.csproj", "{A72CD92D-B3F6-4AA7-B56A-AA806EAF7D59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple-BlogApi", "Simple-BlogApi\Simple-BlogApi.csproj", "{A72CD92D-B3F6-4AA7-B56A-AA806EAF7D59}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple-BlogUI", "Simple-BlogUI\Simple-BlogUI.csproj", "{283148F2-285A-447F-90C2-E495B34C746A}"
 EndProject
