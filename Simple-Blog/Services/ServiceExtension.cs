@@ -1,6 +1,6 @@
-﻿using Simple_Blog.Repositories;
+﻿using Simple_BlogApi.Repositories;
 
-namespace Simple_Blog.Services
+namespace Simple_BlogApi.Services
 {
     public static class ServiceExtension
     {

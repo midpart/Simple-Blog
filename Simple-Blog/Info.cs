@@ -1,4 +1,4 @@
-﻿namespace Simple_Blog
+﻿namespace Simple_BlogApi
 {
     public static class Info
     {

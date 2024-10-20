@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore;
-using Simple_Blog.Model.Entities;
+using Simple_BlogApi.Model.Entities;
 
-namespace Simple_Blog.Repositories
+namespace Simple_BlogApi.Repositories
 {
     public interface IBaseRepository<TEntity> where TEntity : class, IBaseEntity
     {

@@ -1,7 +1,7 @@
-﻿using Simple_Blog.Model.Entities;
-using Simple_Blog.Repositories;
+﻿using Simple_BlogApi.Model.Entities;
+using Simple_BlogApi.Repositories;
 
-namespace Simple_Blog.Services
+namespace Simple_BlogApi.Services
 {
     public interface IBaseService<TEntity>
     {

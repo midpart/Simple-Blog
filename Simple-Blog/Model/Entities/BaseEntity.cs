@@ -1,4 +1,4 @@
-﻿namespace Simple_Blog.Model.Entities
+﻿namespace Simple_BlogApi.Model.Entities
 {
     public interface IBaseEntity
     {

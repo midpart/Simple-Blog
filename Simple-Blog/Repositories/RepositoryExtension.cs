@@ -1,4 +1,4 @@
-﻿namespace Simple_Blog.Repositories
+﻿namespace Simple_BlogApi.Repositories
 {
     public class RepositoryExtension
     {

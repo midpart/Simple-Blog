@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Simple_Blog.Model.Dtos;
-using Simple_Blog.Model.Entities;
-using Simple_Blog.Services;
+using Simple_BlogApi.Model.Dtos;
+using Simple_BlogApi.Model.Entities;
+using Simple_BlogApi.Services;
 
-namespace Simple_Blog.Controllers
+namespace Simple_BlogApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

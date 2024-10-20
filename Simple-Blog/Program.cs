@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using Simple_Blog.CommonLib;
-using Simple_Blog.Services;
+using Simple_BlogApi.CommonLib;
+using Simple_BlogApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

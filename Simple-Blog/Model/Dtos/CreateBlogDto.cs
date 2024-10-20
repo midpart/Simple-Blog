@@ -1,6 +1,6 @@
-﻿using Simple_Blog.Model.Entities;
+﻿using Simple_BlogApi.Model.Entities;
 
-namespace Simple_Blog.Model.Dtos
+namespace Simple_BlogApi.Model.Dtos
 {
     public class CreateBlogDto
     {

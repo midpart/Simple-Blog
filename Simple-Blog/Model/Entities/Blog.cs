@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Simple_Blog.Model.Entities
+namespace Simple_BlogApi.Model.Entities
 {
     public class Blog :BaseEntity
     {

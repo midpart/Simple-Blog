@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Simple_Blog.CommonLib;
-using Simple_Blog.Model.Entities;
+using Simple_BlogApi.CommonLib;
+using Simple_BlogApi.Model.Entities;
 using System.Linq;
 using System.Threading;
 
-namespace Simple_Blog.Repositories
+namespace Simple_BlogApi.Repositories
 {
     public interface IBlogRepository : IBaseRepository<Blog>
     {
